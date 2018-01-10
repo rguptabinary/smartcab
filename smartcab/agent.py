@@ -61,8 +61,15 @@ class LearningAgent(Agent):
         # constraints in order for you to learn how to adjust epsilon and alpha, and thus learn about the balance between exploration and exploitation.
         # With the hand-engineered features, this learning process gets entirely negated.
         
-        # Set 'state' as a tuple of relevant data for the agent        
-        state = None
+        # Set 'state' as a tuple of relevant data for the agent   
+
+        def state_str(s):
+            if s is None: 
+                return  'None'
+            else: 
+                return str(s)
+        
+        state = state_str(waypoint) + "_" + state_str(inputs['oncoming']) + "_" + state_str(inputs['left']) + "_" + state_str(inputs['light'])
 
         return state
 
